@@ -1,0 +1,5 @@
+package locales
+
+func Header() {
+	// ...
+}
