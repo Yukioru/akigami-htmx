@@ -1,0 +1,24 @@
+{
+  "name": "akigami-htmx",
+  "type": "module",
+  "scripts": {
+    "postinstall": "make all",
+    "dev": "concurrently --raw -n w: npm:dev:*",
+    "scripts": "esbuild scripts/app.ts --bundle --target=es2020 --outfile=public/assets/app.js",
+    "dev:server": "air",
+    "dev:styles": "npm run build:styles -- --watch",
+    "dev:scripts": "npm run scripts -- --watch",
+    "build:styles": "npx tailwindcss -i ./styles/app.css -o ./public/assets/app.css",
+    "build:scripts": "npm run scripts -- --minify --sourcemap"
+  },
+  "author": "Andrey Kondalov <andrey@kondalov.com",
+  "license": "ISC",
+  "dependencies": {
+    "htmx.org": "^1.9.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.18.18",
+    "tailwindcss": "^3.3.3"
+  }
+}
