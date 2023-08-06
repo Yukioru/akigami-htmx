@@ -2,3 +2,4 @@ bin/
 public/assets/
 public/vendors/
 node_modules/
+**/*.gz
