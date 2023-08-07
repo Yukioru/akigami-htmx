@@ -1,6 +1,7 @@
 package main
 
 import (
+	"akigami.co/locales"
 	"akigami.co/utils"
 	"github.com/bytedance/sonic"
 	"github.com/gofiber/fiber/v2"
@@ -30,6 +31,9 @@ func main() {
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("pages/index", fiber.Map{
+			"locales": fiber.Map{
+				"header": locales.Header(),
+			},
 			"meta": utils.MakeMetadata(utils.Metadata{
 				Title: "Главная",
 			}),

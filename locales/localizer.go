@@ -1,20 +1,36 @@
 package locales
 
 import (
-	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/bytedance/sonic"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
 
-var localizer *i18n.Localizer
+var Localizer *i18n.Localizer
 var bundle *i18n.Bundle
 
-func Localizer()  {
+func InitLocalizer() {
 	bundle = i18n.NewBundle(language.Russian)
 
 	bundle.RegisterUnmarshalFunc("json", sonic.Unmarshal)
-	bundle.MustLoadMessageFile("locales/resouces/ru.json")
-	bundle.MustLoadMessageFile("locales/resouces/en.json")
+	bundle.MustLoadMessageFile("locales/resources/ru.json")
+	bundle.MustLoadMessageFile("locales/resources/en.json")
 
-	localizer = i18n.NewLocalizer(bundle, language.Russian.String(), language.English.String())
+	Localizer = i18n.NewLocalizer(bundle, language.Russian.String(), language.English.String())
+}
+
+func Localize(messageID string) string {
+	if Localizer == nil {
+		InitLocalizer()
+	}
+
+	msg, err := Localizer.Localize(&i18n.LocalizeConfig{
+		MessageID: messageID,
+	})
+
+	if err != nil {
+		panic(err)
+	}
+
+	return msg
 }
