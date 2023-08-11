@@ -1,3 +1,49 @@
 <script>
   document.title = '{{meta.Title}}';
 </script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "{{meta.BaseURL}}",
+    "name": "{{meta.Brand.Title}}",
+    "description": "{{meta.Brand.Description}}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{meta.BaseURL}}/search?&q={query}",
+      "query": "required",
+      "query-input": "required name=query"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+{{#if meta.Description}}
+    "description": "{{meta.Description}}",
+{{/if}}
+{{#each meta.Breadcrumbs}}
+{{#if @first}}
+    "breadcrumb": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+{{/if}}
+        {
+          "@type": "ListItem",
+          "position": {{Position}},
+          "item": {
+            "@id": "{{Url}}",
+            "name": "{{Title}}"
+          }
+        }{{#unless @last}},{{/unless}}
+{{#if @last}}
+      ]
+    },
+{{/if}}
+{{/each}}
+    "url": "{{meta.CurrentURL}}",
+    "name": "{{meta.Title}}"
+  }
+]
+</script>
