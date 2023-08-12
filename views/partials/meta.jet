@@ -19,29 +19,26 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-{{#if meta.Description}}
+{{if meta.Description}}
     "description": "{{meta.Description}}",
-{{/if}}
-{{#each meta.Breadcrumbs}}
-{{#if @first}}
+{{end}}
+{{if len(meta.Breadcrumbs) > 0}}
     "breadcrumb": {
-      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-{{/if}}
+      {{range i := meta.Breadcrumbs}}
         {
           "@type": "ListItem",
-          "position": {{Position}},
+          "position": {{.Position}},
           "item": {
-            "@id": "{{Url}}",
-            "name": "{{Title}}"
+            "@id": "{{.Url}}",
+            "name": "{{.Title}}"
           }
-        }{{#unless @last}},{{/unless}}
-{{#if @last}}
+        }{{if i < len(meta.Breadcrumbs)}},{{end}}
+      {{end}}
       ]
     },
-{{/if}}
-{{/each}}
+{{end}}
     "url": "{{meta.CurrentURL}}",
     "name": "{{meta.Title}}"
   }

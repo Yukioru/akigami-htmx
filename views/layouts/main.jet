@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{meta.Locale}}">
   <head>
     <meta charset="utf-8">
     <title>{{meta.Title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Акигами">
+    <link rel="preload" href="/assets/app.css" as="style" />
     <link rel="stylesheet" href="/assets/app.css">
-    <script async="true" defer="true" src="/assets/app.js"></script>
-    <script async="true" defer="true" src="/vendors/htmx.min.js"></script>
+    <script async defer src="/assets/app.js"></script>
+    <script async defer src="/vendors/htmx.min.js"></script>
   </head>
   <body hx-boost="true">
     <main hx-swap="innerHTML">
-      {{embed}}
+      {{embed()}}
     </main>
   </body>
 </html>

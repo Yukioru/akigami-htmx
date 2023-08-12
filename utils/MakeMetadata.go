@@ -13,6 +13,7 @@ type BreadcrumbsOutput struct {
 }
 
 type MetadataInput struct {
+	Locale      string
 	Title       string
 	CurrentURL  string
 	Description string
@@ -25,6 +26,7 @@ type Brand struct {
 }
 
 type MetadataOutput struct {
+	Locale      string
 	Brand       Brand
 	Title       string
 	BaseURL     string
@@ -50,6 +52,7 @@ func MakeMetadata(meta MetadataInput) MetadataOutput {
 	}
 
 	return MetadataOutput{
+		Locale:      meta.Locale,
 		Title:       fmt.Sprintf(titleTemplate, meta.Title),
 		Description: meta.Description,
 		Breadcrumbs: breadcrumbs,

@@ -3,6 +3,8 @@ module akigami.co
 go 1.20
 
 require (
+	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
+	github.com/CloudyKit/jet/v6 v6.2.0 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
 	github.com/bytedance/sonic v1.9.2 // indirect
@@ -10,6 +12,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.48.0 // indirect
 	github.com/gofiber/template v1.8.2 // indirect
 	github.com/gofiber/template/handlebars/v2 v2.1.5 // indirect
+	github.com/gofiber/template/jet/v2 v2.1.5 // indirect
 	github.com/gofiber/utils v1.1.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
