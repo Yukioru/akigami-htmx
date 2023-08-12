@@ -128,11 +128,6 @@ func main() {
 			redirectUrl = "/"
 		}
 
-		log.Println("Headers:", c.GetReqHeaders())
-
-		log.Println("Referer:", referer)
-		log.Println("Redirecting to:", redirectUrl)
-
 		return c.Redirect(redirectUrl)
 	})
 
