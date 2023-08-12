@@ -51,16 +51,23 @@ func MakeMetadata(meta MetadataInput) MetadataOutput {
 		})
 	}
 
+	brand := Brand{
+		Title:       "Акигами",
+		Description: "Какое-то логичное описание",
+	}
+
+	description := meta.Description
+	if description == "" {
+		description = brand.Description
+	}
+
 	return MetadataOutput{
 		Locale:      meta.Locale,
 		Title:       fmt.Sprintf(titleTemplate, meta.Title),
-		Description: meta.Description,
+		Description: description,
 		Breadcrumbs: breadcrumbs,
 		BaseURL:     baseUrl,
 		CurrentURL:  baseUrl + meta.CurrentURL,
-		Brand: Brand{
-			Title:       "Акигами",
-			Description: "Какое-то логичное описание",
-		},
+		Brand:       brand,
 	}
 }
