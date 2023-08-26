@@ -5,10 +5,11 @@
     <title>{{meta.Title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{meta.Description}}">
+    <meta name="htmx-config" content='{"selfRequestsOnly":true}'>
     <link rel="preload" href="/assets/app.css" as="style" />
     <link rel="stylesheet" href="/assets/app.css">
-    <script async defer src="/assets/app.js"></script>
     <script async defer src="/vendors/htmx.min.js"></script>
+    <!-- <script async defer src="/assets/app.js"></script> -->
   </head>
   <body hx-boost="true">
     {{embed()}}

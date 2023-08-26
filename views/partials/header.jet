@@ -1,12 +1,6 @@
-<header class="flex items-center">
-  <div>
-    <a href="/">{{locales.header.menu.home}}</a>
-  </div>
-  <div class="ml-auto" hx-boost="false">
-    {{if meta.Locale == "ru"}}
-      <a href="/locale/en">English</a>
-    {{else}}
-      <a href="/locale/ru">Русский</a>
-    {{end}}
-  </div>
-</header>
+{{import "../components/header"}}
+{{import "../components/menu"}}
+
+{{yield header() content}}
+  {{yield menu(active=routeKey)}}
+{{end}}

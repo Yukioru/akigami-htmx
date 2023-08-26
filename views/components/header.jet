@@ -1,0 +1,5 @@
+{{block header()}}
+  <header class="flex items-center">
+    {{yield content}}
+  </header>
+{{end}}

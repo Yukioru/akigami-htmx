@@ -9,6 +9,7 @@ import (
 
 func IndexPageController(c *fiber.Ctx) error {
 	return c.Render("pages/index", fiber.Map{
+		"routeKey": "home",
 		"locales": fiber.Map{
 			"header": locales.Header(c.Locals("localizer").(*i18n.Localizer)),
 		},

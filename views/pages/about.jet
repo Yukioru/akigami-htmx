@@ -1,5 +1,5 @@
-{{include "../partials/meta"}}
 {{include "../partials/header"}}
+{{include "../partials/meta"}}
 
 <h1 class="text-4xl font-black">About page</h1>
 <p>

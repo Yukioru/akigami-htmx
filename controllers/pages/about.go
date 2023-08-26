@@ -9,6 +9,7 @@ import (
 
 func AboutPageController(c *fiber.Ctx) error {
 	return c.Render("pages/about", fiber.Map{
+		"routeKey": "about",
 		"locales": fiber.Map{
 			"header": locales.Header(c.Locals("localizer").(*i18n.Localizer)),
 		},
