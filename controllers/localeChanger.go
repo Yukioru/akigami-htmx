@@ -28,5 +28,5 @@ func LocaleChangerController(c *fiber.Ctx) error {
 		redirectUrl = "/"
 	}
 
-	return c.Redirect(redirectUrl)
+	return c.Redirect(redirectUrl, 303)
 }
