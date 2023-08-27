@@ -60,5 +60,5 @@ func main() {
 
 	routes.InitRoutes(app)
 
-	app.Listen(":42069")
+	app.Listen("127.0.0.1:42069")
 }
