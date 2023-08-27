@@ -1,10 +1,12 @@
 {{include "../partials/header"}}
 {{include "../partials/meta"}}
 
-<h1 class="text-4xl font-black">Demo page</h1>
-<p>
-  <a href="/">To index page</a>
-</p>
-<p>
-  <a href="/about">To about page</a>
-</p>
+<div class="container">
+  <h1 class="text-4xl font-black">Demo page</h1>
+  <p>
+    <a href="/">To index page</a>
+  </p>
+  <p>
+    <a href="/about">To about page</a>
+  </p>
+</div>

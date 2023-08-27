@@ -5,8 +5,8 @@ import (
 )
 
 func GetLayout(c *fiber.Ctx, name string) string {
-	boosted := c.Get("Hx-Boosted")
-	if boosted == "true" {
+	hx := c.Get("Hx-Request")
+	if hx == "true" {
 		return ""
 	}
 

@@ -1,0 +1,9 @@
+{{block localeChanger()}}
+  <div>
+    {{if meta.Locale == "ru"}}
+      <a href="/locale/en">English</a>
+    {{else}}
+      <a href="/locale/ru">Русский</a>
+    {{end}}
+  </div>
+{{end}}

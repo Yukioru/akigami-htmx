@@ -1,7 +1,18 @@
 {
+  "head": {
+    "index": "Home",
+    "demo": "Demo",
+    "about": "About",
+    "auth": "Authentication"
+  },
   "menu": {
-    "home": "Home",
+    "index": "Home",
     "demo": "Demo",
     "about": "About"
+  },
+  "common": {
+    "buttons": {
+      "login": "Login"
+    }
   }
 }

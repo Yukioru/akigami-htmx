@@ -1,0 +1,19 @@
+{{block menu_item(href, key, active)}}
+  <a href="{{href}}" class='{{key == active ? "font-bold" : ""}}'>
+    {{yield content}}
+  </a>
+{{end}}
+
+{{block menu(active)}}
+  <div class="flex gap-3">
+    {{yield menu_item(href="/", key="index", active=active) content}}
+      {{locales.header.menu.index}}
+    {{end}}
+    {{yield menu_item(href="/demo", key="demo", active=active) content}}
+      {{locales.header.menu.demo}}
+    {{end}}
+    {{yield menu_item(href="/about", key="about", active=active) content}}
+      {{locales.header.menu.about}}
+    {{end}}
+  </div>
+{{end}}

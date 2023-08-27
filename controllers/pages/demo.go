@@ -8,19 +8,16 @@ import (
 )
 
 func DemoPageController(c *fiber.Ctx) error {
-	return c.Render("pages/demo", fiber.Map{
-		"routeKey": "demo",
-		"locales": fiber.Map{
-			"header": locales.Header(c.Locals("localizer").(*i18n.Localizer)),
-		},
-		"meta": utils.MakeMetadata(utils.MetadataInput{
-			Locale:     c.Locals("locale").(string),
-			Title:      "Демо",
-			CurrentURL: "/demo",
+	localizer := c.Locals("localizer").(*i18n.Localizer)
+	pageTitle := locales.Localize(localizer, "head.demo")
+
+	return utils.RenderHtml(c, utils.RenderHtmlInput{
+		Meta: utils.MetadataInput{
+			Title: pageTitle,
 			Breadcrumbs: utils.BreadcrumbsInput{
-				{"/", "Главная"},
-				{"/demo", "Демо"},
+				{"/", locales.Localize(localizer, "head.index")},
+				{c.Path(), pageTitle},
 			},
-		}),
-	}, utils.GetLayout(c, "main"))
+		},
+	})
 }

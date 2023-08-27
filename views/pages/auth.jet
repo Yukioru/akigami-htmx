@@ -1,0 +1,6 @@
+{{include "../partials/header"}}
+{{include "../partials/meta"}}
+
+<div class="container">
+  <h1 class="text-4xl font-black">Auth page</h1>
+</div>

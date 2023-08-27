@@ -8,6 +8,7 @@ import (
 
 func InitRoutes(router fiber.Router) {
 	router.Get("/", pages.IndexPageController)
+	router.Get("/auth", pages.AuthPageController)
 	router.Get("/demo", pages.DemoPageController)
 	router.Get("/about", pages.AboutPageController)
 

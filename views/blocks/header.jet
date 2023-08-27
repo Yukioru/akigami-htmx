@@ -1,0 +1,21 @@
+{{import "./localeChanger"}}
+
+{{block header()}}
+  <header>
+    <div class="flex items-center container">
+      {{yield content}}
+    </div>
+  </header>
+{{end}}
+
+{{block headerUser(user=map())}}
+  <div>
+    <b>{{user.displayName}}</b>
+  </div>
+{{end}}
+
+{{block headerAuth()}}
+  <a href="/auth" class="block py-2 px-3 bg-black text-white rounded">
+    {{locales.common.buttons.login}}
+  </a>
+{{end}}

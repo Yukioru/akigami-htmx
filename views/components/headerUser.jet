@@ -1,0 +1,7 @@
+{{import "../blocks/header"}}
+
+{{if ctx.user}}
+  {{yield headerUser(user=ctx.user)}}
+{{else}}
+  {{yield headerAuth()}}
+{{end}}

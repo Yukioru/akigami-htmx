@@ -1,7 +1,9 @@
 {{include "../partials/header"}}
 {{include "../partials/meta"}}
 
-<h1 class="text-4xl font-black">About page</h1>
-<p>
-  <a href="/demo">To demo page</a>
-</p>
+<div class="container">
+  <h1 class="text-4xl font-black">About page</h1>
+  <p>
+    <a href="/demo">To demo page</a>
+  </p>
+</div>

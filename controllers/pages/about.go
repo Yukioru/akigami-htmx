@@ -8,19 +8,16 @@ import (
 )
 
 func AboutPageController(c *fiber.Ctx) error {
-	return c.Render("pages/about", fiber.Map{
-		"routeKey": "about",
-		"locales": fiber.Map{
-			"header": locales.Header(c.Locals("localizer").(*i18n.Localizer)),
-		},
-		"meta": utils.MakeMetadata(utils.MetadataInput{
-			Locale:     c.Locals("locale").(string),
-			Title:      "О нас",
-			CurrentURL: "/about",
+	localizer := c.Locals("localizer").(*i18n.Localizer)
+	pageTitle := locales.Localize(localizer, "head.about")
+
+	return utils.RenderHtml(c, utils.RenderHtmlInput{
+		Meta: utils.MetadataInput{
+			Title: pageTitle,
 			Breadcrumbs: utils.BreadcrumbsInput{
-				{"/", "Главная"},
-				{"/about", "О нас"},
+				{"/", locales.Localize(localizer, "head.index")},
+				{c.Path(), pageTitle},
 			},
-		}),
-	}, utils.GetLayout(c, "main"))
+		},
+	})
 }

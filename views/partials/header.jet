@@ -1,6 +1,11 @@
-{{import "../components/header"}}
-{{import "../components/menu"}}
+{{import "../blocks/header"}}
+{{import "../blocks/menu"}}
+{{import "../blocks/localeChanger"}}
 
 {{yield header() content}}
   {{yield menu(active=routeKey)}}
+  <div class="ml-auto flex items-center gap-3">
+    {{yield localeChanger()}}
+    {{include "../components/headerUser"}}
+  </div>
 {{end}}
