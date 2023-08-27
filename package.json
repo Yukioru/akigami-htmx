@@ -11,8 +11,8 @@
     "build:styles": "npx tailwindcss -i ./styles/app.css -o ./public/assets/app.css",
     "build:scripts": "npm run scripts -- --minify --sourcemap"
   },
-  "author": "Andrey Kondalov <andrey@kondalov.com",
-  "license": "ISC",
+  "author": "Andrey Kondalov <andrey@kondalov.com>",
+  "license": "MIT",
   "dependencies": {
     "htmx.org": "^1.9.4"
   },
