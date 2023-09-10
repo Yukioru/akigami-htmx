@@ -2,6 +2,7 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "tailwindCSS.rootFontSize": 18,
   "tailwindCSS.includeLanguages": {
     "jet": "html"
   }

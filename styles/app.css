@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply min-h-full h-full;
+  }
+  html {
+    font-size: 18px;
+  }
+  body {
+    @apply flex flex-col;
+  }
+}
