@@ -14,5 +14,17 @@
     "buttons": {
       "login": "Login"
     }
+  },
+  "auth": {
+    "title": "Welcome",
+    "submit": "Continue",
+    "confirm": {
+      "title": "Check your E-mail",
+      "text": "We have sent a magic link to your email. Follow the link to sign in or register."
+    },
+    "email": {
+      "title": "E-mail",
+      "placeholder": "okaberintarou@example.com"
+    }
   }
 }

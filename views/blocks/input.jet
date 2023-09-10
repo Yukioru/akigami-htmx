@@ -1,0 +1,11 @@
+{{block input(id, title, type = "text", size = "md", class, placeholder, required)}}
+<label for="{{id}}" class="inline-block mb-1 font-medium">{{title}}</label>
+<input
+  id="{{id}}"
+  name="{{id}}"
+  type="{{type}}"
+  class="block py-2 px-4 border rounded-md{{if class}} {{class}}{{end}}"
+  {{if placeholder}}placeholder="{{placeholder}}"{{end}}
+  {{if required}}required="{{required}}"{{end}}
+>
+{{end}}

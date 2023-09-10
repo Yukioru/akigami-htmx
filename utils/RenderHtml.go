@@ -12,6 +12,7 @@ type RenderHtmlInput struct {
 	Locales   fiber.Map
 	Meta      MetadataInput
 	RouteKey  string
+	RouteType string
 	LayoutKey string
 	Data      fiber.Map
 }
@@ -33,6 +34,10 @@ func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
 		input.RouteKey = "index"
 	}
 
+	if input.RouteType == "" {
+		input.RouteType = "pages"
+	}
+
 	metaInput := MetadataInput{}
 	metaInput.Locale = c.Locals("locale").(string)
 	metaInput.CurrentURL = currentPath
@@ -46,11 +51,20 @@ func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
 		layoutKey = "main"
 	}
 
-	return c.Render("pages/"+input.RouteKey, fiber.Map{
+	hx := c.Get("Hx-Request")
+	if hx == "true" || input.RouteType == "components" {
+		layoutKey = ""
+	} else {
+		layoutKey = "layouts/" + layoutKey
+	}
+
+	return c.Render(input.RouteType+"/"+input.RouteKey, fiber.Map{
 		"routeKey": input.RouteKey,
 		"locales":  localesMap,
 		"meta":     MakeMetadata(metaInput),
 		"data":     input.Data,
-		"ctx":      fiber.Map{},
-	}, GetLayout(c, layoutKey))
+		"ctx": fiber.Map{
+			"hx": hx,
+		},
+	}, layoutKey)
 }

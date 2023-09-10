@@ -14,5 +14,17 @@
     "buttons": {
       "login": "Войти"
     }
+  },
+  "auth": {
+    "title": "Добро пожаловать",
+    "confirm": {
+      "title": "Проверьте E-mail",
+      "text": "Мы выслали волшебную ссылку на ваш Email. Перейдите по ней, чтобы войти или зарегистрироваться."
+    },
+    "submit": "Продолжить",
+    "email": {
+      "title": "E-mail",
+      "placeholder": "okaberintarou@example.com"
+    }
   }
 }

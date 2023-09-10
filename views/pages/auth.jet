@@ -1,6 +1,9 @@
 {{include "../partials/header"}}
 {{include "../partials/meta"}}
 
-<div class="container">
-  <h1 class="text-4xl font-black">Auth page</h1>
+<div class="container flex items-center justify-center flex-1">
+  <div class="border rounded-xl p-6 w-full max-w-sm">
+    <h1 class="font-bold text-2xl mb-6">{{locales.auth.title}}</h1>
+    {{include "../components/authForm"}}
+  </div>
 </div>

@@ -1,6 +1,6 @@
-<script>
-  document.title = '{{meta.Title}}';
-</script>
+{{if ctx.hx}}
+<script>document.title = '{{meta.Title}}';</script>
+{{end}}
 <script type="application/ld+json">
 [
   {
