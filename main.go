@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"akigami.co/locales"
 	"akigami.co/routes"
@@ -20,12 +21,14 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	isProduction := os.Getenv("GO_ENV") == "production"
 	engine := jet.New("./views", ".jet")
 
 	app := fiber.New(fiber.Config{
 		Views:       engine,
 		JSONEncoder: sonic.Marshal,
 		JSONDecoder: sonic.Unmarshal,
+		Prefork:     isProduction,
 	})
 
 	app.Use(helmet.New())

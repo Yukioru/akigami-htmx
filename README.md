@@ -13,7 +13,7 @@ Trying to create a fully functional web service with minimal JS code.
 - [esbuild+typescript](https://esbuild.github.io/)
 
 ### How to run
-0. Download & install Go, Node and PNPM
-1. Run `pnpm i`
+0. Download & install Go and npx
+1. Run `make bootstrap`
 2. Create `.env` file with example
-3. Run `pnpm dev`
+3. Run `make dev`
