@@ -1,5 +1,4 @@
 {{include "../partials/header"}}
-{{include "../partials/meta"}}
 
 <div class="container">
   <h1 class="text-4xl font-black">Demo page</h1>
@@ -10,3 +9,5 @@
     <a href="/about">To about page</a>
   </p>
 </div>
+
+{{include "../partials/meta"}}

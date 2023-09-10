@@ -1,5 +1,4 @@
 {{include "../partials/header"}}
-{{include "../partials/meta"}}
 
 <div class="container flex items-center justify-center flex-1">
   <div class="border rounded-xl p-6 w-full max-w-sm">
@@ -7,3 +6,5 @@
     {{include "../components/authForm"}}
   </div>
 </div>
+
+{{include "../partials/meta"}}
