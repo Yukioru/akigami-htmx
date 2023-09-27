@@ -6,9 +6,6 @@
   html, body {
     @apply min-h-full h-full;
   }
-  html {
-    font-size: 18px;
-  }
   body {
     @apply flex flex-col;
   }
