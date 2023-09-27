@@ -10,3 +10,13 @@
     @apply flex flex-col;
   }
 }
+
+@layer utilities {
+  .htmx-indicator {
+    display: none;
+  }
+
+  .htmx-request .htmx-indicator {
+    display: block;
+  }
+}

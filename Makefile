@@ -11,7 +11,7 @@ dev:
 .PHONY: dev
 
 watch_server:
-	air
+	./bin/air
 .PHONY: watch_server
 
 watch:
@@ -26,7 +26,7 @@ watch_styles:
 	npx tailwindcss -i ./styles/app.css -o ./public/assets/app.css --watch
 .PHONY: watch_styles
 
-build: build_scripts build_styles
+build: build_scripts build_styles build_server
 .PHONY: build
 
 build_server:

@@ -7,6 +7,7 @@ import (
 )
 
 func InitRoutes(router fiber.Router) {
+
 	router.Get("/", pages.IndexPageController)
 	router.Get("/auth", pages.AuthPageController)
 	router.Get("/demo", pages.DemoPageController)
@@ -15,5 +16,9 @@ func InitRoutes(router fiber.Router) {
 	router.Get("/locale/:code", controllers.LocaleChangerController)
 
 	components := router.Group("/components")
+
 	InitComponentsRoutes(components)
+
+	api := router.Group("/api")
+	InitApiRoutes(api)
 }

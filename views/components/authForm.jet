@@ -1,7 +1,11 @@
 {{import "../blocks/button"}}
 {{import "../blocks/input"}}
 
-<form hx-post="/components/auth" hx-target="closest div">
+<form
+  hx-post="/api/auth"
+  hx-target="closest div"
+  class="[&.htmx-request]:pointer-events-none relative"
+>
   {{yield input(
     id = "email",
     type = "email",
@@ -15,4 +19,14 @@
     class ="mt-6 w-full",
     title = locales.auth.submit,
   )}}
+  <div class="htmx-indicator absolute inset-0 bg-white/80">
+    <img
+      width="54"
+      height="54"
+      src="/images/loader.svg"
+      alt="{{locales.common.loading}}"
+      aria-hidden="true"
+      class="absolute inset-0 m-auto"
+    />
+  </div>
 </form>

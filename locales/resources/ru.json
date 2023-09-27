@@ -11,6 +11,7 @@
     "about": "О нас"
   },
   "common": {
+    "loading": "Загрузка",
     "buttons": {
       "login": "Войти"
     }

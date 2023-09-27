@@ -7,6 +7,7 @@ import (
 
 func Common(localizer *i18n.Localizer) fiber.Map {
 	return fiber.Map{
+		"loading": Localize(localizer, "common.loading"),
 		"buttons": fiber.Map{
 			"login": Localize(localizer, "common.buttons.login"),
 		},

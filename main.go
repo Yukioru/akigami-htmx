@@ -11,6 +11,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/encryptcookie"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/jet/v2"
 	"github.com/joho/godotenv"
 )
@@ -31,7 +32,11 @@ func main() {
 		Prefork:     isProduction,
 	})
 
-	app.Use(helmet.New())
+	app.Use(logger.New())
+	app.Use(helmet.New(helmet.Config{
+		XSSProtection:         "1",
+		ContentSecurityPolicy: "default-src 'self'",
+	}))
 	app.Use(compress.New(compress.Config{
 		Level: compress.LevelBestSpeed,
 	}))
