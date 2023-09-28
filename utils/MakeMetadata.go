@@ -12,17 +12,18 @@ type BreadcrumbsOutput struct {
 	Title    string
 }
 
+type Brand struct {
+	Title       string
+	Description string
+}
+
 type MetadataInput struct {
+	Brand       Brand
 	Locale      string
 	Title       string
 	CurrentURL  string
 	Description string
 	Breadcrumbs BreadcrumbsInput
-}
-
-type Brand struct {
-	Title       string
-	Description string
 }
 
 type MetadataOutput struct {
@@ -34,8 +35,6 @@ type MetadataOutput struct {
 	Description string
 	Breadcrumbs []BreadcrumbsOutput
 }
-
-var titleTemplate = "%s | Акигами"
 
 func MakeMetadata(meta MetadataInput) MetadataOutput {
 
@@ -52,9 +51,11 @@ func MakeMetadata(meta MetadataInput) MetadataOutput {
 	}
 
 	brand := Brand{
-		Title:       "Акигами",
-		Description: "Какое-то логичное описание",
+		Title:       meta.Brand.Title,
+		Description: meta.Brand.Description,
 	}
+
+	titleTemplate := "%s | " + brand.Title
 
 	description := meta.Description
 	if description == "" {

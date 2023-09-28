@@ -1,4 +1,8 @@
 {
+  "brand": {
+    "title": "Акигами",
+    "text": "Какое-то описание"
+  },
   "head": {
     "index": "Главная",
     "demo": "Демо",
@@ -18,11 +22,11 @@
   },
   "auth": {
     "title": "Добро пожаловать",
+    "submit": "Продолжить",
     "confirm": {
       "title": "Проверьте E-mail",
       "text": "Мы выслали волшебную ссылку на ваш Email. Перейдите по ней, чтобы войти или зарегистрироваться."
     },
-    "submit": "Продолжить",
     "email": {
       "title": "E-mail",
       "placeholder": "okaberintarou@example.com"

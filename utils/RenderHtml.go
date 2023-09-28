@@ -25,6 +25,7 @@ func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
 	}
 	localesMap["header"] = locales.Header(localizer)
 	localesMap["common"] = locales.Common(localizer)
+	brandLocales := locales.Brand(localizer)
 
 	currentPath := c.Path()
 	if input.RouteKey == "" {
@@ -45,6 +46,8 @@ func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
 	metaInput.Title = input.Meta.Title
 	metaInput.Description = input.Meta.Description
 	metaInput.Breadcrumbs = input.Meta.Breadcrumbs
+	metaInput.Brand.Title = brandLocales["title"].(string)
+	metaInput.Brand.Description = brandLocales["description"].(string)
 
 	layoutKey := input.LayoutKey
 	if layoutKey == "" {

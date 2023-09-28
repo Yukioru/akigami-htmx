@@ -1,4 +1,8 @@
 {
+  "brand": {
+    "title": "Akigami",
+    "text": "Some description"
+  },
   "head": {
     "index": "Home",
     "demo": "Demo",
