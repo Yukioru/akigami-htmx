@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"akigami.co/db"
 	"akigami.co/locales"
 	"akigami.co/routes"
 	"github.com/bytedance/sonic"
@@ -21,6 +22,13 @@ func main() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
+	db.Init()
+	defer func() {
+		if err := db.Client.Disconnect(db.Ctx); err != nil {
+			panic(err)
+		}
+	}()
 
 	isProduction := os.Getenv("GO_ENV") == "production"
 	engine := jet.New("./views", ".jet")
