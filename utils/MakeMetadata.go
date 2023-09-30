@@ -3,6 +3,10 @@ package utils
 import (
 	"fmt"
 	"os"
+	"strconv"
+	"time"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 type BreadcrumbsInput [][2]string
@@ -36,8 +40,8 @@ type MetadataOutput struct {
 	Breadcrumbs []BreadcrumbsOutput
 }
 
-func MakeMetadata(meta MetadataInput) MetadataOutput {
-
+func MakeMetadata(c *fiber.Ctx, meta MetadataInput) MetadataOutput {
+	timer := time.Now()
 	breadcrumbs := []BreadcrumbsOutput{}
 
 	baseUrl := os.Getenv("BASE_URL")
@@ -61,6 +65,8 @@ func MakeMetadata(meta MetadataInput) MetadataOutput {
 	if description == "" {
 		description = brand.Description
 	}
+
+	c.Response().Header.Add("Server-Timing", "make_metadata;dur="+strconv.FormatInt(time.Since(timer).Milliseconds(), 10))
 
 	return MetadataOutput{
 		Locale:      meta.Locale,

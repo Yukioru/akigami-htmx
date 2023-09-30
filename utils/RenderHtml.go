@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"strconv"
 	"strings"
+	"time"
 
 	"akigami.co/locales"
 	"github.com/gofiber/fiber/v2"
@@ -18,6 +20,7 @@ type RenderHtmlInput struct {
 }
 
 func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
+	timer := time.Now()
 	localizer := c.Locals("localizer").(*i18n.Localizer)
 	localesMap := input.Locales
 	if localesMap == nil {
@@ -61,10 +64,12 @@ func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
 		layoutKey = "layouts/" + layoutKey
 	}
 
+	c.Response().Header.Add("Server-Timing", "render_html;dur="+strconv.FormatInt(time.Since(timer).Milliseconds(), 10))
+
 	return c.Render(input.RouteType+"/"+input.RouteKey, fiber.Map{
 		"routeKey": input.RouteKey,
 		"locales":  localesMap,
-		"meta":     MakeMetadata(metaInput),
+		"meta":     MakeMetadata(c, metaInput),
 		"data":     input.Data,
 		"ctx": fiber.Map{
 			"hx": hx,

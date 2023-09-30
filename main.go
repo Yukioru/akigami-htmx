@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"os"
+	"strconv"
+	"time"
 
 	"akigami.co/db"
 	"akigami.co/locales"
@@ -16,6 +18,8 @@ import (
 	"github.com/gofiber/template/jet/v2"
 	"github.com/joho/godotenv"
 )
+
+var maxAge = 31536000 // 1 year
 
 func main() {
 	err := godotenv.Load()
@@ -41,24 +45,36 @@ func main() {
 	})
 
 	app.Use(logger.New())
+
 	app.Use(helmet.New(helmet.Config{
 		XSSProtection:         "1",
 		ContentSecurityPolicy: "default-src 'self'",
 	}))
-	app.Use(compress.New(compress.Config{
-		Level: compress.LevelBestSpeed,
-	}))
+
+	app.Use(compress.New())
+
 	app.Use(encryptcookie.New(encryptcookie.Config{
 		Key: encryptcookie.GenerateKey(),
 	}))
+
+	app.Static("/", "./public/static", fiber.Static{
+		MaxAge:   maxAge,
+		Compress: true,
+	})
+
+	app.Static("/", "./public", fiber.Static{
+		MaxAge: maxAge,
+	})
+
 	app.Use(func(c *fiber.Ctx) error {
+		timer := time.Now()
 		cookieLang := c.Cookies("locale")
 		if cookieLang == "" {
 			cookieLang = locales.DefaultLanguage
 			c.Cookie(&fiber.Cookie{
 				Name:     "locale",
 				Value:    cookieLang,
-				MaxAge:   31536000, // 1 year
+				MaxAge:   maxAge,
 				HTTPOnly: true,
 				Path:     "/",
 			})
@@ -67,11 +83,9 @@ func main() {
 		localizer := locales.InitLocalizer(cookieLang, c.Get("Accept-Language"))
 		c.Locals("locale", cookieLang)
 		c.Locals("localizer", localizer)
-		return c.Next()
-	})
 
-	app.Static("/", "./public", fiber.Static{
-		MaxAge: 31536000, // 1 year
+		c.Response().Header.Add("Server-Timing", "lang_middleware;dur="+strconv.FormatInt(time.Since(timer).Milliseconds(), 10))
+		return c.Next()
 	})
 
 	routes.InitRoutes(app)
