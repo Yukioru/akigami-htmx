@@ -13,7 +13,9 @@ func IndexPageController(c *fiber.Ctx) error {
 	localizer := c.Locals("localizer").(*i18n.Localizer)
 	pageTitle := locales.Localize(localizer, "head.index")
 
-	users := models.User.Find()
+	userModel := models.Get[models.UserSchema](c, "users")
+
+	users := userModel.Find()
 	log.Info(users)
 
 	return utils.RenderHtml(c, utils.RenderHtmlInput{

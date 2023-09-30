@@ -10,5 +10,3 @@ type UserSchema struct {
 	Username string
 	Avatar   string
 }
-
-var User = CreateMethods[UserSchema]("users")
