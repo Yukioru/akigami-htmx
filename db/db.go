@@ -29,5 +29,5 @@ func Init() {
 		panic(err)
 	}
 
-	DB = Client.Database("htmx")
+	DB = Client.Database(mongoDBName)
 }
