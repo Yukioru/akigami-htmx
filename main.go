@@ -15,6 +15,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/encryptcookie"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/session"
+	"github.com/gofiber/storage/mongodb/v2"
 	"github.com/gofiber/template/jet/v2"
 	"github.com/joho/godotenv"
 )
@@ -56,6 +58,24 @@ func main() {
 	app.Use(encryptcookie.New(encryptcookie.Config{
 		Key: encryptcookie.GenerateKey(),
 	}))
+
+	sessionStore := mongodb.New(mongodb.Config{
+		ConnectionURI: os.Getenv("DB_URI"),
+		Database:      os.Getenv("DB_NAME"),
+		Collection:    "sessions",
+	})
+
+	session := session.New(session.Config{
+		Storage:        sessionStore,
+		CookiePath:     "/",
+		CookieHTTPOnly: true,
+		Expiration:     time.Duration(maxAge),
+	})
+
+	app.Use(func(c *fiber.Ctx) error {
+		c.Locals("session", session)
+		return c.Next()
+	})
 
 	app.Static("/", "./public/static", fiber.Static{
 		MaxAge:   maxAge,

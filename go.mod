@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/bytedance/sonic v1.10.1
 	github.com/gofiber/fiber/v2 v2.49.2
+	github.com/gofiber/storage/mongodb/v2 v2.0.0-20230928072357-3e53b6f96fd2
 	github.com/gofiber/template/jet/v2 v2.1.6
 	github.com/joho/godotenv v1.5.1
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
