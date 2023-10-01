@@ -11,7 +11,7 @@ func DemoPageController(c *fiber.Ctx) error {
 	localizer := c.Locals("localizer").(*i18n.Localizer)
 	pageTitle := locales.Localize(localizer, "head.demo")
 
-	return utils.RenderHtml(c, utils.RenderHtmlInput{
+	return utils.HTMLResponse(c, utils.HTMLResponseOptions{
 		Meta: utils.MetadataInput{
 			Title: pageTitle,
 			Breadcrumbs: utils.BreadcrumbsInput{

@@ -18,7 +18,7 @@ func IndexPageController(c *fiber.Ctx) error {
 	users := userModel.Find()
 	log.Info(users)
 
-	return utils.RenderHtml(c, utils.RenderHtmlInput{
+	return utils.HTMLResponse(c, utils.HTMLResponseOptions{
 		Meta: utils.MetadataInput{
 			Title: pageTitle,
 		},

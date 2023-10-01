@@ -11,7 +11,7 @@ func AuthPageController(c *fiber.Ctx) error {
 	localizer := c.Locals("localizer").(*i18n.Localizer)
 	pageTitle := locales.Localize(localizer, "head.auth")
 
-	return utils.RenderHtml(c, utils.RenderHtmlInput{
+	return utils.HTMLResponse(c, utils.HTMLResponseOptions{
 		Locales: fiber.Map{
 			"auth": locales.Auth(localizer),
 		},

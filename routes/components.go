@@ -6,5 +6,5 @@ import (
 )
 
 func InitComponentsRoutes(router fiber.Router) {
-	router.Get("/auth", components.AuthComponentController)
+	router.Post("/auth", components.AuthComponentController)
 }

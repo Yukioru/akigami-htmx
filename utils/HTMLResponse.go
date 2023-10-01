@@ -10,7 +10,7 @@ import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
-type RenderHtmlInput struct {
+type HTMLResponseOptions struct {
 	Locales   fiber.Map
 	Meta      MetadataInput
 	RouteKey  string
@@ -19,7 +19,7 @@ type RenderHtmlInput struct {
 	Data      fiber.Map
 }
 
-func RenderHtml(c *fiber.Ctx, input RenderHtmlInput) error {
+func HTMLResponse(c *fiber.Ctx, input HTMLResponseOptions) error {
 	timer := time.Now()
 	localizer := c.Locals("localizer").(*i18n.Localizer)
 	localesMap := input.Locales

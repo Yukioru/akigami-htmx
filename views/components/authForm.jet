@@ -2,7 +2,7 @@
 {{import "../blocks/input"}}
 
 <form
-  hx-post="/api/auth"
+  hx-post="/components/auth"
   hx-target="closest div"
   class="[&.htmx-request]:pointer-events-none relative"
 >
